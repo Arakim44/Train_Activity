@@ -18,6 +18,7 @@ var database = firebase.database();
  var destination = "";
  var frequency = "";
  var nextArrival = "";
+ var firstTime = "";
  var minAway = "";
 
  //capture button Click
@@ -27,9 +28,26 @@ var database = firebase.database();
    name = $("#train-name").val().trim();
    destination = $("#destination").val().trim();
    frequency = $("#frequency").val().trim();
+   firstTime = $("#first-time").val().trim();
+   //firstTime = moment($("#first-time").val().trim(),"HH:mm").format("X");
    //figure out moment.js and have it convert.
    //
-  //  convertedFirstTime = moment()
+   convertedStartTime = moment(firstTime,'HH:mm');
+   var timeDiff = moment().diff(moment(convertedStartTime),'minutes');
+   //# of the next train to this time since the first Train.
+   var nextTrain = roundUp(timeDiff/parseFloat(frequency),1);
+   var minTillNextTrain = nextTrain*parseFloat(frequency);
+
+   nextTrainTime = convertedStartTime.add(minTillNextTrain,'m');
+
+   nextArrival = nextTrainTime.format("HH:mm");
+
+   console.log("firstTime",convertedStartTime);
+   console.log("timeDiff",timeDiff);
+   console.log("nextTrain",nextTrain);
+   console.log("minTillNextTrain",minTillNextTrain);
+   console.log("nexttraintime",nextTrainTime);
+   console.log("nextArrival",nextArrival);
 
 
 
@@ -67,18 +85,7 @@ var database = firebase.database();
    console.log("Errors handled: "+errorObject.code);
  });
 
-  database.ref().on("value", function(snapshot){
-    //log everything that's coming out of snapshot
-
-    console.log(snapshot.val());
-    console.log(snapshot.val().name);
-    console.log(snapshot.val().destination);
-    console.log(snapshot.val().frequency);
-    console.log(snapshot.val().nextArrival);
-    console.log(snapshot.val().minAway);
-
-    //handle the errors
-  }, function(errorObject){
-    console.log("Errors handled: "+ errorObject.code);
-
-  });
+//round up function from stack overflow.
+ function roundUp(num, precision) {
+   return Math.ceil(num * precision) / precision
+ };
