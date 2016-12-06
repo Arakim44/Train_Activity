@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://www.gstatic.com/firebasejs/3.6.0/firebase.js"></script>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <title>Train Activity</title>
+  </head>
+  <body>
+    <div class="container">
+      <!-- HEADER -->
+      <div class="row">
+          <div class="col-sm-12 jumbotron text-center">
+              <h1>Employee Management</h1>
+          </div>
+      </div>
+      <!--Panel-->
+      <div class="row panel">
+          <div class="row">
+              <div id="ee-list" class="col-sm-12">
+                <h2>Employee List</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Employee Name</th>
+            <th>Role</th>
+            <th>Start Date</th>
+            <th>Months Worked</th>
+            <th>Monthly Rate ($)</th>
+            <th>Total Billed</th>
+          </tr>
+        </thead>
+        <tbody id="tbody">
+
+        </tbody>
+      </table>
+              </div>
+          </div>
+      </div>
+      <!-- SEARCH PARAMETERS SECTION -->
+      <div class="row panel">
+          <div class="row">
+              <div class="col-sm-12">
+                  <h4>Add Employee</h4>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-sm-12">
+                  <div class="form-group">
+                      <label>Employee Name:</label>
+                      <input class="form-control" id="ee-name" type="text">
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-sm-12">
+                  <div class="form-group">
+                      <label>Role:</label>
+                      <input class="form-control" id="role" type="text">
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-sm-12">
+                  <div class="form-group">
+                      <label>Start Date (DD/MM/YY - ex: 01/01/89):</label>
+                      <input class="form-control" id="start-date" type="text">
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-sm-12">
+                  <div class="form-group">
+                      <label>Monthly Rate ($)</label>
+                      <input class="form-control" id="month-rate" type="text">
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-sm-12">
+                  <input class="btn button button-info" type="submit" value="Submit" id="submit">
+              </div>
+          </div>
+      </div>
+
+
+      <form class="form-horizontal">
+        <fieldset>
+          <legend>Legend</legend>
+          <div class="form-group">
+            <label for="inputEmail" class="col-lg-2 control-label">Email</label>
+            <div class="col-lg-10">
+              <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+            <div class="col-lg-10">
+              <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox"> Checkbox
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="textArea" class="col-lg-2 control-label">Textarea</label>
+            <div class="col-lg-10">
+              <textarea class="form-control" rows="3" id="textArea"></textarea>
+              <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-2 control-label">Radios</label>
+            <div class="col-lg-10">
+              <div class="radio">
+                <label>
+                  <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+                  Option one is this
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                  Option two can be something else
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="select" class="col-lg-2 control-label">Selects</label>
+            <div class="col-lg-10">
+              <select class="form-control" id="select">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+              <br>
+              <select multiple="" class="form-control">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-lg-10 col-lg-offset-2">
+              <button type="reset" class="btn btn-default">Cancel</button>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+
+
+
+    <script src="dataApp.js"></script>
+
+  </body>
+</html>
