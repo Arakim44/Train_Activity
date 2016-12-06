@@ -31,23 +31,28 @@ var database = firebase.database();
    firstTime = $("#first-time").val().trim();
    //firstTime = moment($("#first-time").val().trim(),"HH:mm").format("X");
    //figure out moment.js and have it convert.
-   //
    convertedStartTime = moment(firstTime,'HH:mm');
+   //Time difference from current time to first train time.
    var timeDiff = moment().diff(moment(convertedStartTime),'minutes');
-   //# of the next train to this time since the first Train.
+   //This is the # of total trains that went till the next train after the current time. this is used to find out how many more min till next train from first train.
    var nextTrain = roundUp(timeDiff/parseFloat(frequency),1);
+   //This minute is from first train min till the next train.
    var minTillNextTrain = nextTrain*parseFloat(frequency);
-
+   //adding the first train time and the minute till next train will give you the next train time. This is an object.
    nextTrainTime = convertedStartTime.add(minTillNextTrain,'m');
+   //This formating will give you actual PM or AM time of the time of next arrival.
+   nextArrival = nextTrainTime.format("LT");
+   //just subtracted the next arrival time to current time, and return the minute.
+   minAway = moment(nextTrainTime).diff(moment(),'minutes');
 
-   nextArrival = nextTrainTime.format("HH:mm");
-
+   //consoling everything so I can track what i'm coding.
    console.log("firstTime",convertedStartTime);
    console.log("timeDiff",timeDiff);
    console.log("nextTrain",nextTrain);
    console.log("minTillNextTrain",minTillNextTrain);
    console.log("nexttraintime",nextTrainTime);
    console.log("nextArrival",nextArrival);
+   console.log("minaway",minAway);
 
 
 
