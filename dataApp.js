@@ -29,6 +29,13 @@ var database = firebase.database();
    destination = $("#destination").val().trim();
    frequency = $("#frequency").val().trim();
    firstTime = $("#first-time").val().trim();
+
+
+   $('#train-name').val("");
+   $('#destination').val("");
+   $('#first-time').val("");
+   $('#frequency').val("");
+
    //firstTime = moment($("#first-time").val().trim(),"HH:mm").format("X");
    //figure out moment.js and have it convert.
    convertedStartTime = moment(firstTime,'HH:mm');
